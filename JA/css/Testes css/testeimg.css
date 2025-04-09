@@ -1,0 +1,19 @@
+.logotipos {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Diminui o espaçamento entre os logos */
+}
+
+.logotipos img {
+  max-width: 80px; /* Diminui um pouco os logos */
+  height: auto;
+  display: block;
+}
+.interface{
+  max-width: 2560px;
+  padding: 0 ;
+  margin: o auto;
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+}

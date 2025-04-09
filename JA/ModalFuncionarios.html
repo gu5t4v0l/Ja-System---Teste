@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/Modal/ModalFuncionarios.css">
+    <link rel="stylesheet" href="css/Roots/Roots.css">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+    
+    <title>Modal</title>
+
+</head>
+<body>
+
+<div id="CadModal" class="modal">
+  <div class="modal-content">
+    
+    <div class="Close"><button class="close"> X </button></div>
+
+      <div id ="form-cargo"> 
+
+          <div class = "title">
+            <h1> Cadastro de Funcionario</h1>
+          </div>
+
+      
+
+        <form  id="funcionarios" name="form" autocomplete="off">
+          
+            <div class="form">
+              <input type="text" name="idFuncionarios" id="idFuncionarios" required spellcheck="false">
+              <label for ="idFuncionarios">#Codigo</label>
+            </div>
+
+            <fieldset>
+              <legend>Perfil</legend>                
+                    <div class="Perfil">
+                      
+                        <div class="perfil-radios">
+                          <label for="radio">Interno</label>
+                          <input type="radio" name="radio" id="radio1" >
+                        </div>
+                        <div class="perfil-radios">
+                          <label for="radio">Externo</label>
+                          <input type="radio" name="radio" id="radio2" >
+                        </div>
+                        <div class="perfil-radios">
+                          <label for="radio">Free-lancer</label>
+                          <input type="radio" name="radio" id="radio3" >
+                        </div>
+
+                        <div class="perfil-foto">
+                          <label class="picture"  for="pictureInput"  tabindex="0">
+                          <span class="pictureImage"> Foto 3x4</span>
+                          <input type="file" name="pictureInput" id="pictureInput" accept="image/*">
+                          </label>
+                        </div>                  
+                    </div>  
+            </fieldset>
+
+
+            <fieldset>
+              <legend> Informaçoes Pessoais </legend>
+              <div class="form">
+                <input type="text" name="nome" id="nome" required spellcheck="false">
+                <label for="nome">Nome</label>
+              </div>
+                  <div class="form-2colunas">
+                    <div class="form2">
+                      <input type="text" name="cpf" id="cpf"  maxlength="14"  oninput="formatCPF(this)" spellcheck="false" required>
+                      <label for="cpf">CPF</label>
+                    </div>
+                    <div class="form2">
+                      <input type="text" name="rg" id="rg" maxlength="12" oninput="formatRG(this)" spellcheck="false" required >
+                      <label for="rg">RG</label>
+                    </div>
+                  </div>
+            </fieldset>
+
+
+            <fieldset>
+              <legend> Informaçoes para contato</legend>
+              <div class="form-2colunas">
+                <div class="form2">
+                  <input type="tel" name="celContato" id="celContato" maxlength="15" oninput="formatCelular(this)" required>
+                  <label for="celContato">Celular Pessoal</label>
+                </div>
+                <div class="form2">
+                  <input type="tel" name="celContato " id="celContato"  maxlength="15" oninput="formatCelular(this)" required>
+                  <label for="celContato">Celular para contato familiar </label>
+                </div>
+              </div>
+              <div class="form-2colunas">
+                <div class="form2">
+                  <input type="email" name="email" id="email" required spellcheck="false">
+                  <label for="email">Email</label>
+                </div>
+                <div class="form2">
+                  <input type="url" name="site" id="site" spellcheck="false" required >
+                  <label for="site"> Site </label>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Informaçoes de Residencia</legend>
+              <div class="form-2colunas">
+                  <div class="form2">
+                    <input type="text" id="cep" name="cep" maxlength="9" oninput="formatCEP(this)" required spellcheck="false">
+                      <label for="cep">CEP</label>
+                  </div>
+                  <div class="form2">
+                    <input type="text" id="rua" name="rua" required spellcheck="false">
+                      <label for="rua">Rua</label>
+                  </div>
+                </div>
+                  <div class="form-2colunas">
+                    <div class="form2">
+                      <input type="text" id="numero" name="numero" required spellcheck="false" >
+                      <label for="numero">Número</label>
+                    </div>
+                    <div class="form2">
+                      <input type="text" id="bairro" name="bairro" required spellcheck="false">
+                      <label for="bairro"> Bairro </label>
+                    </div>
+                  </div>
+    
+                      <div class="form-2colunas">
+                        <div class="form2">
+                          <input type="text" id="cidade" name="cidade" required >
+                          <label for="cidade">Cidade</label>
+                        </div>
+                        <div class="form2">
+                          <input type="text" id="estado" name="estado" required >
+                          <label for="estado"> Estado</label>
+                        </div>
+                        <div class="form2">
+                          <input type="text" id="pais" name="pais" required>
+                          <label for="pais">Pais</label>
+                        </div>
+                      </div>
+                    </div>
+              </fieldset>
+
+        </form>
+      </div>
+          <div class="BTNs">
+            <button class="Pesquisar" type="submit">Pesquisar</button>
+            <button class="Limpar" type="submit">Limpar</button>
+            <button class="Enviar" type="submit">Enviar</button>
+          </div>
+    </div>
+</div>
+<script src="js/Formataçoes.js"></script>
+<script src="js/Modais/Fichaexe.js"></script>
+<script src="js/Modal.js"></script>
+</body>
+</html>

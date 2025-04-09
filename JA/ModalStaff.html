@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/Modal/ModalStaff.css">
+    <link rel="stylesheet" href="css/Roots/Roots.css">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+
+    <title>Modal</title>
+
+</head>
+<body>
+
+<div id="CadModal" class="modal">
+    <div class="modal-content">
+      <div class="Close"><button class="close"> X </button></div>
+
+      <div id ="form-cargo"> 
+
+        
+        <div class = "title">
+          <h1>Cadastro STAFF</h1>
+        </div>
+
+            <form method="post" id="form" name="form" autocomplete="off">
+
+
+              <div class ="form">
+                <input type="text" name="codStaff" id = "codStaff"  required spellcheck="false">
+                <label for ="codStaff">ID Staff</label>
+                </div>
+
+                <fieldset>
+                  <legend> Funcionario </legend>
+                    <div class ="form">
+                      <input type="text" name="Nome" id="Nome"  required spellcheck="false">
+                      <label for = "Nome">  Nome do Funcionario </label>
+                    </div>
+                    <div class="form-2colunas">
+                      <div class="form2">
+                        <input type="text" name="codCargo" id="codCargo" required spellcheck="false">
+                        <label for="codCargo">Id do Cargo</label>
+                      </div>
+                      <div class="form2">
+                          <input type="text" name="descCargo" id="descCargo" required spellcheck="false">
+                          <label for="descCargo"> Cargo</label>                        
+                      </div>
+                    </div>
+                </fieldset> <br>
+                  
+                  
+              <fieldset>
+                <legend> Detalhes do Evento </legend>
+
+                  <div class="form">
+                    <input type="text" name="Evento" id="Evento" required>
+                    <label for="Evento"> Evento </label>
+                  </div>
+  
+                  <div class="form-2colunas">
+                    <div class="form2">
+                      <legend>De:</legend>
+                      <input type="date" name="Data" id="Data" placeholder="Data" required>
+                    </div>
+                    <div class="form2">
+                      <legend>Até:</legend>
+                      <input type="date" name="Data" id="Data" placeholder="Data" required>
+                    </div>
+                  </div>
+                  
+                <div class="form-2colunas">
+                    <div class="form2">
+                        <input type="text" name="beneStaff" id="beneStaff" required spellcheck="false" >
+                        <label for="beneStaff"> Valor de Beneficios </label>
+                    </div>
+                    <div class="form2">
+                      <textarea name="DescriçãoBeneficios" id="DescriçãoBeneficios" placeholder="Descreva os Beneficios" required spellcheck="false"></textarea>
+                    </div>
+                </div>
+              </fieldset><br>
+              
+
+              <fieldset>
+                <legend>Cliente</legend>
+                <div class="form-2colunas">
+                  <div class="form2">
+                    <input type="text" name="Clientes" id="Clientes"  required>
+                    <label for="Clientes">Cliente</label>
+                  </div>
+                  <div class="form2">
+                    <input type="text" name="CodigoCliente" id="CodigoCliente" required>
+                    <label for="codCliente"> ID do Cliente</label>
+                  </div>
+                </div>
+              </fieldset> <br>
+              
+
+              <fieldset>
+                <legend>Comprovantes</legend>
+                <label  class="subtitle"> Upload de Comprovantes </label>
+                <div class="container">
+                  <label class="file" for="file-upload" id="file-name"> Clique ou Arraste para Upload</label>
+                  <input type="file" id="file-upload">
+                  <div class="preview-container" id="previewContainer"></div>
+                </div>
+                <div class="btn-file">
+                    <button id="visualizar-btn">Visualizar</button>
+                    <button id="excluir-btn">Excluir</button>
+                </div> <br>
+              </fieldset>
+
+          </form>
+        </div>
+        <div class="BTNs">
+              <button class="Pesquisar" type="submit">Pesquisar</button>
+              <button class="Limpar" type="submit">Limpar</button>
+              <button class="Enviar" type="submit">Enviar</button>
+          </div>
+    </div>
+</div>
+
+
+<script src="js/Modal.js" defer></script>
+<script src="js/File.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/Modal/ModalCargo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+    
+    <title>Modal</title>
+
+</head>
+<body>
+
+<div id="CadModal" class="modal">
+
+    <div class="modal-content">
+        
+        <div id ="form-cargo"> 
+            
+                <button class="close"> X </button>
+            
+            <div class = "title">
+                <h1>Cadastro de Cargos</h1>
+            </div>
+
+            <form  id="form" name="form" autocomplete="on">
+    
+                <div class ="form">
+                    <label for = "codCargo">Código</label>
+                    <input type="text" name="codCargo" id = "codCargo" placeholder="Código" required>
+                </div>
+                <div class ="form">
+                    <label for = "descCargo"> Descrição do Cargo </label>
+                    <input type="text" name="descCargo" id="descCargo" placeholder="Descreva o Cargo" required>
+                </div>
+    
+                <div class ="form">
+                    <label for = "Custo"> Custo </label>
+                    <input type="text"  name="Custo" id ="Custo" placeholder="apenas números ou será inválido" required>
+                </div>
+
+                <div class ="form">
+                    <label for = "Venda"> Venda </label>
+                    <input type="text" name="Venda" id ="Venda" placeholder="apenas números ou será inválido" required>
+                </div> 
+                
+                <div class="BTNs">
+                    <button class="Pesquisar" type="submit">Pesquisar</button>
+                    <button class="limpar" type="submit">limpar</button>
+                    <button class="enviar" type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <script src="js/Moeda.js" defer></script>
+    <script src="js/Modal.js" defer></script>
+    <script src="js/Cadastro.js"></script>
+</body>
+</html>
