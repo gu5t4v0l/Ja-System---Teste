@@ -60,14 +60,21 @@
 <div id="container">
     <section id="painel-lateral">
     <div class="title">
-        <span id="titulo-painel">Clientes</span>
-        <span id="seta-toggle" onclick="alternarTipo()">&#x25B6;</span> <!-- seta ► -->
+        <div id="painel-clientes" class="painel-item">
+            <span class="painel-titulo">Clientes</span>
+            <i class="fa-regular fa-square-caret-right seta" onclick="alternarTipo()"></i>
+        </div>
+    
+        <div id="painel-eventos" class="painel-item hidden">
+            <i class="fa-regular fa-square-caret-left seta" onclick="alternarTipo()"></i>
+            <span class="painel-titulo">Eventos</span>
+        </div>
+    </div>
+</section>
+    <div>
+        <ul id="lista-dados"></ul>
     </div>
 
-    <ul id="lista-dados">
-        <!-- Lista vai aparecer aqui -->
-    </ul>
-</section>
         <main>
             <div><h1>teste</h1></div>
         </main>
@@ -99,7 +106,7 @@
                 </div>
 <!-- 
                 <div class="prototipo">
-                    <p></p>
+    
                 </div> -->
             </div>
             
@@ -112,8 +119,8 @@
     </div>
     
 </footer>
-    <script src="Aside.js"></script>
-    <script src="js/Index/dadosClienteeEvento.js"></script>
+    <script src="js/Aside.js"></script>
+    <script src="js/Animaçoes/animacao.js"></script>
     <script src="js/Modal.js"></script>
     <script src="js/orcamento.js"></script>
 </body>

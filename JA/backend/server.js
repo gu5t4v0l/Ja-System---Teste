@@ -49,26 +49,33 @@ app.post("/clientes", async (req, res) => {
     }
 });
 
-app.get('/dados/:tipo', async (req, res) => {
-    const tipo = req.params.tipo;
-  
-    let query;
+// Retornar lista de clientes
+app.get('/api/:tipo', async (req, res) => {
+  const { tipo } = req.params;
+
+  try {
+    let resultado;
+
     if (tipo === 'clientes') {
-      query = 'SELECT nome FROM clientes';
+      resultado = await pool.query('SELECT id, nmfantasia FROM clientes');
+      console.log("✅  clientes mostrando com sucesso:", resultado.rows);
+      res.json({ success: true, data: resultado.rows });
+
     } else if (tipo === 'eventos') {
-      query = 'SELECT nome FROM eventos';
+      resultado = await pool.query('SELECT id, titulo FROM eventos');
+      console.log("✅ Eventos mostrando com sucesso:", resultado.rows);
+      res.json({ success: true, data: resultado.rows });
+
     } else {
       return res.status(400).json({ erro: 'Tipo inválido' });
     }
-  
-    try {
-      const result = await pool.query(query);
-      res.json(result.rows);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ erro: 'Erro ao buscar dados' });
-    }
-  });
+
+  } catch (err) {
+    console.error(`Erro ao buscar ${tipo}:`, err);
+    res.status(500).json({ erro: `Erro ao buscar ${tipo}` });
+  }
+});
+
 
 
 
