@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="Css/index/Style-OPER.css">
+    <link rel="stylesheet" href="css/Roots/Roots.css">
     <link rel="stylesheet" href="css/Footer/Footer-OPER.CSS">
     <title>Home</title>
 
@@ -57,28 +58,40 @@
     <div id="modal-container"></div>
 
     
-<div id="container">
-    <section id="painel-lateral">
-    <div class="title">
-        <div id="painel-clientes" class="painel-item">
-            <span class="painel-titulo">Clientes</span>
-            <i class="fa-regular fa-square-caret-right seta" onclick="alternarTipo()"></i>
-        </div>
-    
-        <div id="painel-eventos" class="painel-item hidden">
-            <i class="fa-regular fa-square-caret-left seta" onclick="alternarTipo()"></i>
-            <span class="painel-titulo">Eventos</span>
-        </div>
-    </div>
-</section>
-    <div>
-        <ul id="lista-dados"></ul>
-    </div>
-
-        <main>
-            <div><h1>teste</h1></div>
+    <div id="wrapper">
+        <aside id="sidebar">
+            <div id="toggle-btn" onclick="alternarMenu()">»</div>
+        
+            <section id="painel-container">
+                <div class="abas">
+                <div id="aba-clientes" class="aba ativa" onclick="mostrarPainel('clientes')">Clientes</div>
+                <div id="aba-eventos" class="aba desativada" onclick="mostrarPainel('eventos')">Eventos</div>
+                <div id="aba-orcamento" class="aba desativada" onclick="mostrarPainel('orcamento')">Orçamento</div>
+                </div>
+        
+                <div id="painel-clientes" class="painel ativo">
+                <div class="destaque">Selecione o Cliente:</div>
+                <ul id="lista-dados-clientes"></ul>
+                </div>
+        
+                <div id="painel-eventos" class="painel">
+                <div id="cliente-selecionado" class="destaque">Nome do cliente</div>
+                <ul id="lista-dados-eventos"></ul>
+                </div>
+        
+                <div id="painel-orcamentos" class="painel">
+                <div id="orcamento-selecionado" class="destaque">Nome do cliente / Evento</div>
+                <ul id="lista-dados-orcamento"></ul>
+                </div>
+            </section>
+        </aside>
+        
+        <main id="conteudo">
+            <h1>Área Principal</h1>
+            <p>Seu conteúdo principal vai aqui.</p>
         </main>
-</div>
+    </div>
+        
 
 
     
@@ -119,9 +132,11 @@
     </div>
     
 </footer>
-    <script src="js/Aside.js"></script>
-    <script src="js/Animaçoes/animacao.js"></script>
+
+    <script src="js/Envio de dados/Clientes.js"></script>
+    <script src="js/Index/Aside.js" defer></script>
     <script src="js/Modal.js"></script>
+    <script src="js/Formataçoes.js" defer></script>
     <script src="js/orcamento.js"></script>
 </body>
 </html>
