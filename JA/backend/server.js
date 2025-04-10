@@ -58,12 +58,12 @@ app.get('/api/:tipo', async (req, res) => {
 
     if (tipo === 'clientes') {
       resultado = await pool.query('SELECT id, nmfantasia FROM clientes');
-      console.log("✅  clientes mostrando com sucesso:", resultado.rows);
+      console.log("✅  clientes mostrando com sucesso", );
       res.json({ success: true, data: resultado.rows });
 
     } else if (tipo === 'eventos') {
       resultado = await pool.query('SELECT id, titulo FROM eventos');
-      console.log("✅ Eventos mostrando com sucesso:", resultado.rows);
+      console.log("✅ Eventos mostrando com sucesso");
       res.json({ success: true, data: resultado.rows });
 
     } else {
