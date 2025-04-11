@@ -42,6 +42,7 @@
                                 <a href="#" onclick="abrirModal('ModalSuprimentos.html')">Suprimentos</a>
                                 <a href="#" onclick="abrirModal('CadEquipamentos.html')">Equipamentos</a>
                                 <a href="#" onclick="abrirModal('LocalMontagem.html')">Local de Montagem</a>
+                                <a href="#" onclick="abrirModal('ModalEventos.html')">Eventos</a>
                             </div>
                         </div>
                     </li>
@@ -87,8 +88,16 @@
         </aside>
         
         <main id="conteudo">
-            <h1>Área Principal</h1>
-            <p>Seu conteúdo principal vai aqui.</p>
+        <div id="painel-infos">
+            <h2>Informações do Sistema</h2>
+            <ul class="infos-lista">
+                <li><strong>Nome do sistema:</strong> JAS </li>
+                <li><strong>Versão:</strong> 1.0.0 ALPHA </li>
+                <li><strong>Última atualização:</strong> Abril de 2025</li>
+                <li><strong>Desenvolvedor:</strong> JA Developers </li>
+                <li><strong>Contato:</strong> contato@seudominio.com</li>
+            </ul>
+            </div>
         </main>
     </div>
         
@@ -132,11 +141,12 @@
     </div>
     
 </footer>
-
+    <script src="js/Envio de dados/Cargo.js"></script>
+    <script src="js/Envio de dados/Eventos.js"></script>
     <script src="js/Envio de dados/Clientes.js"></script>
     <script src="js/Index/Aside.js" defer></script>
-    <script src="js/Modal.js"></script>
     <script src="js/Formataçoes.js" defer></script>
     <script src="js/orcamento.js"></script>
+    <script src="js/Modal.js"defer></script>
 </body>
 </html>

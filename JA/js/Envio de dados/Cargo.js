@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Captura os valores do formulário
         
-        const descCargo = document.querySelector("#descCargo").value;
+        const descCargo = document.querySelector("#descCargo").value;  
         const vlrCusto = document.querySelector("#ctoCargo").value;
         const vlrVenda = document.querySelector("#vdaCargo").value;
 
@@ -35,5 +35,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
-

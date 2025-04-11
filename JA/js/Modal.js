@@ -27,6 +27,27 @@ function abrirModal(url) {
             let modalContainer = document.getElementById("modal-container");
             modalContainer.innerHTML = html;
 
+            let script = null;
+
+            if (url.includes("ModalClientes")) {
+                script = document.createElement("script");
+                script.src = "js/Clientes.js";
+            } else if (url.includes("CadCargo")) {
+                script = document.createElement("script");
+                script.src = "js/Cargo.js";
+            } else if (url.includes("Orcamento")) {
+                script = document.createElement("script");
+                script.src = "js/Orcamento.js";
+            }
+
+            if (script) {
+                script.defer = true;
+                script.onload = () => {
+                    configurarEventosEspecificos(url); // só chama depois que o JS carregar
+                };
+                document.body.appendChild(script);
+            }
+
             let modal = modalContainer.querySelector(".modal");
             let overlay = document.getElementById("modal-overlay");
 
@@ -35,17 +56,12 @@ function abrirModal(url) {
                 overlay.style.display = "block";
                 document.body.classList.add("modal-open");
 
-                let closeButton = modal.querySelector('.close');
+                let closeButton = modal.querySelector('.Close');
                 if (closeButton) closeButton.addEventListener('click', fecharModal);
 
                 configurarEventosEspecificos(url);
                 
-                // if (url.includes("Orcamento.html")) {
-                //     carregarScript("http://localhost:3000/js/orcamento.js", function () {
-                //         console.log("Orcamento.js carregado pelo Modal.js!");
-                       
-                //     });
-                // }
+                
             }
         })
         .catch(error => console.error("Erro ao carregar modal:", error));
@@ -62,23 +78,102 @@ function fecharModal() {
     }
     
     if (overlay) {
-        overlay.style.display = "none";
+        // overlay.style.display = "none";
     }
 
     document.body.classList.remove("modal-open");
 }
 
 function configurarEventosEspecificos(url) {
-    console.log("Configurando eventos para:", url);
+    console.log("Modal.js - Configurando eventos para:", url);
 
-    if (url.includes("Orcamento")) {
-        // Aguarde o carregamento do modal antes de executar as funções específicas
-        setTimeout(() => {
-            if (typeof configurarEventosOrcamento === "function") {
-                configurarEventosOrcamento();
-            } else {
-                console.error("Função configurarEventosOrcamento não encontrada!");
-            }
-        }, 500);
-    }
+    const rotas = [
+        { keyword: "Orcamento", func: configurarEventosOrcamento },
+        { keyword: "CadCargo", func: configurarEventosCargos },
+       // { keyword: "Equipamentos", func: configurarEventosEquipamentos },
+       // { keyword: "Suprimentos", func: configurarEventosSuprimentos },
+       // { keyword: "Montagem", func: configurarEventosMontagem },
+        { keyword: "ModalClientes", func: configurarEventosClientes },
+    ];
+
+    rotas.forEach(({ keyword, func }) => {
+        if (url.includes(keyword)) {
+            setTimeout(() => {
+                if (typeof func === "function") {
+                    console.log(`Chamando ${func.name}()`);
+                    func();
+                } else {
+                    console.error(`Função ${func.name} não encontrada!`);
+                }
+            }, 500);
+        }
+    });
+
+    // if (url.includes("Orcamento")) {
+    //     // Aguarde o carregamento do modal antes de executar as funções específicas
+    //     setTimeout(() => {
+    //         if (typeof configurarEventosOrcamento === "function") {
+    //             configurarEventosOrcamento();
+    //         } else {
+    //             console.error("Função configurarEventosOrcamento não encontrada!");
+    //         }
+    //     }, 500);
+    // }
+   
+    //  if (url.includes("CadCargo")) {
+    //     console.log("Modal.js - Configurando eventos para Cargos");
+    //     // Aguarde o carregamento do modal antes de executar as funções específicas
+    //     setTimeout(() => {
+    //         if (typeof configurarEventosCargos === "function") {
+    //             console.log("Chamando configurarCargos() no Modal.js");
+    //             configurarEventosCargos();
+    //         } else {
+    //             console.error("Função configuraEventosCargos não encontrada!");
+    //         }
+    //     }, 500);
+    // }  
+
+    // if (url.includes("Equipamentos")) {
+    //     // Aguarde o carregamento do modal antes de executar as funções específicas
+    //     setTimeout(() => {
+    //         if (typeof configurarEventosEquipamentos === "function") {
+    //             configurarEventosEquipamentos();
+    //         } else {
+    //             console.error("Função configurarEventosEquipamentos não encontrada!");
+    //         }
+    //     }, 500);
+    // }
+    // if (url.includes("Suprimentos")) {
+    //     // Aguarde o carregamento do modal antes de executar as funções específicas
+    //     setTimeout(() => {
+    //         if (typeof configurarEventosSuprimentos === "function") {
+    //             configurarEventosSuprimentos();
+    //         } else {
+    //             console.error("Função configurarEventosSuprimentos não encontrada!");
+    //         }
+    //     }, 500);
+    // }
+    // if (url.includes("Montagem")) {
+    //     // Aguarde o carregamento do modal antes de executar as funções específicas
+    //     setTimeout(() => {
+    //         if (typeof configurarEventosMontagem === "function") {
+    //             configurarEventosMontagem();
+    //         } else {
+    //             console.error("Função configurarEventosMontagem não encontrada!");
+    //         }
+    //     }, 500);
+    // }
+    // if (url.includes("Clientes")) {
+    //     // Aguarde o carregamento do modal antes de executar as funções específicas
+    //     setTimeout(() => {
+    //         if (typeof configurarEventosClientes === "function") {
+    //             configurarEventosClientes();
+    //         } else {
+    //             console.error("Função configurarEventosClientes não encontrada!");
+    //         }
+    //     }, 500);
+    // }  
+   
+
+
 }

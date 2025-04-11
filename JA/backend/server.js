@@ -20,6 +20,69 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
+
+
+
+app.post("/cargos", async (req, res) => {
+  console.log("📩 Dados recebidos no backend:", req.body);
+  const { descCargo, vlrCusto, vlrVenda} = req.body;
+
+  // Verificação de dados obrigatórios
+  if (!descCargo || !vlrCusto || !vlrVenda) {
+      console.log("❌ Campos faltando!");
+      return res.status(400).json({ success: false, message: "Todos os campos são obrigatórios!" });
+  }
+
+  try {
+      console.log("🔄 Passando para o Banco :", { descCargo, vlrCusto, vlrVenda});
+
+      // Inserindo dados na tabela "cargo"
+      const result = await pool.query(
+          "INSERT INTO cargos (descCargo, vlrCusto, vlrVenda) VALUES ($1, $2, 3$) RETURNING *",
+          [descCargo, vlrCusto, vlrVenda]
+      );
+
+      console.log("✅ Dados inseridos com sucesso:", result.rows[0]);
+      res.json({success: true, data: result.rows[0]});
+
+  } catch (error) {
+      console.error("❌ Erro ao inserir no banco:", error);
+      res.status(500).json({ success: false, message: "Erro ao salvar no banco" });
+  }
+});
+
+
+app.post("/eventos", async (req, res) => {
+  console.log("📩 Dados recebidos no backend:", req.body);
+  const { nmEvento} = req.body;
+
+  // Verificação de dados obrigatórios
+  if (!nmEvento) {
+      console.log("❌ Campos faltando!");
+      return res.status(400).json({ success: false, message: "Todos os campos são obrigatórios!" });
+  }
+
+  try {
+      console.log("🔄 Passando para o Banco :", { nmEvento});
+
+      // Inserindo dados na tabela "cargo"
+      const result = await pool.query(
+          "INSERT INTO eventos (nmEvento) VALUES ($1) RETURNING *",
+          [nmEvento]
+      );
+
+      console.log("✅ Dados inseridos com sucesso:", result.rows[0]);
+      res.json({success: true, data: result.rows[0]});
+
+  } catch (error) {
+      console.error("❌ Erro ao inserir no banco:", error);
+      res.status(500).json({ success: false, message: "Erro ao salvar no banco" });
+  }
+});
+
+
+
+
 // Rota para receber os dados do formulário
 app.post("/clientes", async (req, res) => {
     console.log("📩 Dados recebidos no backend:", req.body);

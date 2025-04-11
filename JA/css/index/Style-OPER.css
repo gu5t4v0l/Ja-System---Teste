@@ -8,19 +8,19 @@
     width: 5px;
     height: 12px; /* Para o scrollbar horizontal */
   }
-
+  
   /* Estiliza a parte que você pode arrastar (thumb) */
   ::-webkit-scrollbar-thumb {
     background-color: #888;
     border-radius: 10px;
   }
-
+  
   /* Estiliza a trilha do scrollbar (o fundo) */
   ::-webkit-scrollbar-track {
     background-color: transparent;
     border-radius: 5px;
   }
-
+  
   /* Adiciona um efeito de hover para o thumb */
   ::-webkit-scrollbar-thumb:hover {
     background-color: #555;
@@ -34,11 +34,11 @@ body{
 header{
   width: 100%;
   /* background-color:  rgb(70, 67, 67); */
-  background: linear-gradient(to right, #942123, rgb(43, 42, 42)  );
+  background: linear-gradient(to right, #942123, rgb(43, 42, 42)  );  
   /* position: fixed; Mantém o header fixo no topo */
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 997;
 }
 
 .interface{
@@ -102,7 +102,7 @@ margin-right: 3px;
 } */
 
 nav {
-  background-color: transparent;
+  background-color: transparent; 
   /* background: linear-gradient(to right, #ce2c2e, rgb(43, 42, 42)  ); */
   transition: background 0.3s ease-in-out; /* Suaviza a troca de cor */
 }
@@ -242,7 +242,7 @@ nav ul li a:hover{
 
 /* Container principal */
 #wrapper {
-  display: flex;
+  display: flex; 
   transition: margin-left 0.3s ease;
 }
 
@@ -257,11 +257,10 @@ nav ul li a:hover{
 /* Sidebar (menu lateral) */
 #sidebar {
   width: 210px;
-  height: 100vh;
+  height: 50vh;
   background: gray;
   position: fixed;
   left: 0;
-  top: 0;
   transition: transform 0.3s ease;
   box-shadow: 2px 0 5px rgba(0,0,0,0.1);
   z-index: 10;
@@ -270,9 +269,10 @@ nav ul li a:hover{
 /* Botão em forma de seta para abrir/fechar */
 #toggle-btn {
   position: absolute;
-  top: 10px;
+  top: 100px;
   right: -20px;
   background: #2e2e2e;
+  opacity: 60%;
   color: white;
   width: 20px;
   height: 40px;
@@ -335,14 +335,31 @@ ul[id^="lista-dados"] li:hover {
   border-radius: 10px;
 }
 
-
 main {
-  flex: 3;
-  background-color: #6d6d6d;
+  flex: 1;
+  height: 70vh;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  font-family: var(--Font-primary);
 }
 
 
-.Cadastro,
+#painel-infos{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 25px;
+
+}
+.infos-lista {
+  list-style: none;
+  font-family: var(--Font-primary) ;
+}
+
+
+.Cadastro, 
 .Orçamento{
   font-family: "abel", sans-serif;
   position: relative;
@@ -441,7 +458,7 @@ button .menu-hamburguer{
     width: 100%;
     padding: 15px;
   }
-
+  
   .menu-hamburguer{
     display: block;
   }

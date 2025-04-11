@@ -1,1 +1,1 @@
-SELECT * FROM clientes
+SELECT * FROM eventos
