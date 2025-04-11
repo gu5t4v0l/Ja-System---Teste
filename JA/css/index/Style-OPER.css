@@ -337,6 +337,7 @@ ul[id^="lista-dados"] li:hover {
 
 main {
   flex: 1;
+  position: static;
   height: 70vh;
   background-color: #ffffff;
   display: flex;
