@@ -337,14 +337,20 @@ ul[id^="lista-dados"] li:hover {
 
 main {
   flex: 1;
-  position: static;
+  position: fixed;
   height: 70vh;
   background-color: #ffffff;
   display: flex;
   justify-content: center;
   font-family: var(--Font-primary);
+  width: 100%;
 }
 
+#conteudos{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 #painel-infos{
   display: flex;
