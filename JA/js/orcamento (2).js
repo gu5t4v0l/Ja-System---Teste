@@ -2,42 +2,42 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Script orcamento.js carregado.");
    // configurarEventosOrcamento()
     //carregarLocalMont();
-    let selects = document.querySelectorAll(".idCargo, .idEquipamento, .idSuprimento");
+    let selects = document.querySelectorAll(".idFuncao, .idEquipamento, .idSuprimento");
     selects.forEach(select => {
         select.addEventListener("change", atualizaProduto);
     });
 
 });
 
-// Função para carregar os cargos
-function carregarCargos() {
-    console.log("Função carregarCargos chamada");
+// Função para carregar os Funcao
+function carregarFuncao() {
+    console.log("Função carregarFuncao chamada");
     
-    fetch('http://localhost:3000/cargos')
+    fetch('http://localhost:3000/Funcao')
         .then(response => response.json())
-        .then(cargos => {
-            let selects = document.querySelectorAll(".idCargo");
+        .then(Funcao => {
+            let selects = document.querySelectorAll(".idFuncao");
             selects.forEach(select => {
                 select.innerHTML = "";
                
                 let opcaoPadrao = document.createElement("option");
                 opcaoPadrao.setAttribute("value", "");
-                opcaoPadrao.textContent = "Selecione Cargo";
+                opcaoPadrao.textContent = "Selecione Funcao";
                 select.appendChild(opcaoPadrao);
 
-                cargos.forEach(cargo => {
+                Funcao.forEach(Funcao => {
                     let option = document.createElement("option");
-                    option.value = cargo.idcargo;
-                    option.textContent = cargo.desccargo;
-                    option.setAttribute("data-descproduto", cargo.desccargo);
-                    option.setAttribute("data-cto", cargo.vlrcusto);
-                    option.setAttribute("data-vda", cargo.vlrvenda);
+                    option.value = Funcao.idfuncao;
+                    option.textContent = Funcao.descfuncao;
+                    option.setAttribute("data-descproduto", Funcao.descfuncao);
+                    option.setAttribute("data-cto", Funcao.vlrcusto);
+                    option.setAttribute("data-vda", Funcao.vlrvenda);
                     select.appendChild(option);
                 });
                 select.addEventListener("change", atualizaProduto);
             });
         })
-        .catch(error => console.error('Erro ao carregar cargos:', error));
+        .catch(error => console.error('Erro ao carregar Funcao:', error));
 }
 
 // Função para carregar os equipamentos
@@ -215,7 +215,7 @@ function configurarFormulario() {
 
         for (let linha of linhas) {
             let dados = {
-                // idCargo: linha.cells[0].querySelector(".idCargo").value,
+                // idFuncao: linha.cells[0].querySelector(".idFuncao").value,
                 qtdPessoas: linha.cells[0].textContent.trim(),
                 qtdDias: linha.cells[1].textContent.trim(),
                 valor: linha.cells[2].textContent.trim(),
@@ -354,7 +354,7 @@ function atualizarUF(selectLocalMontagem) {
 function atualizaProduto(event) {
     console.log("Função atualizaProduto chamada");
 
-    let select = event.target; // Qual select foi alterado (cargo, equipamento ou suprimento)
+    let select = event.target; // Qual select foi alterado (Funcao, equipamento ou suprimento)
 
     console.log("Select alterado:", select); // Log do select alterado
 
@@ -379,7 +379,7 @@ function atualizaProduto(event) {
         let celulaProduto = ultimaLinha.querySelector(".produto");
 
         // Se a célula de produto estiver vazia OU se foi alterado um novo select, atualiza
-        if (celulaProduto && (celulaProduto.textContent === "" || select.classList.contains("idEquipamento") || select.classList.contains("idSuprimento") || select.classList.contains("idCargo"))) {
+        if (celulaProduto && (celulaProduto.textContent === "" || select.classList.contains("idEquipamento") || select.classList.contains("idSuprimento") || select.classList.contains("idFuncao"))) {
             celulaProduto.textContent = produtoSelecionado;
         }
 
@@ -393,7 +393,7 @@ function atualizaProduto(event) {
      
 }
 function resetarOutrosSelects(select) {
-    const selects = document.querySelectorAll('.idCargo, .idEquipamento, .idSuprimento');
+    const selects = document.querySelectorAll('.idFuncao, .idEquipamento, .idSuprimento');
 
     selects.forEach(outroSelect => {
         if (outroSelect !== select) {
@@ -407,7 +407,8 @@ function resetarOutrosSelects(select) {
 
 // Função para configurar eventos no modal de orçamento
 function configurarEventosOrcamento() {
-    carregarEventosCargos();
+    carregarFuncao();
+    carregarCliente();
     carregarLocalMont();
     carregarEquipamentos();
     carregarSuprimentos();

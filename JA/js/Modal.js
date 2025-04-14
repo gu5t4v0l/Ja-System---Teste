@@ -32,9 +32,9 @@ function abrirModal(url) {
             if (url.includes("ModalClientes")) {
                 script = document.createElement("script");
                 script.src = "js/Clientes.js";
-            } else if (url.includes("CadCargo")) {
+            } else if (url.includes("CadFuncao")) {
                 script = document.createElement("script");
-                script.src = "js/Cargo.js";
+                script.src = "js/Funcao.js";
             } else if (url.includes("Orcamento")) {
                 script = document.createElement("script");
                 script.src = "js/Orcamento.js";
@@ -89,7 +89,7 @@ function configurarEventosEspecificos(url) {
 
     const rotas = [
         { keyword: "Orcamento", func: configurarEventosOrcamento },
-        { keyword: "CadCargo", func: configurarEventosCargos },
+        { keyword: "CadFuncao", func: configurarEventosFuncao },
        // { keyword: "Equipamentos", func: configurarEventosEquipamentos },
        // { keyword: "Suprimentos", func: configurarEventosSuprimentos },
        // { keyword: "Montagem", func: configurarEventosMontagem },
